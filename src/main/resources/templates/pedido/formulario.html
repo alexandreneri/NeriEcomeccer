@@ -1,0 +1,59 @@
+<html>
+
+<head th:replace="~{base :: head}"></head>
+
+<body>
+
+	<div th:replace="~{base :: logo}"></div>
+	<div class="container">
+
+		<div th:replace="~{base :: titulo('Novo Pedido')}"></div>
+
+
+		<div class="card">
+			<form th:object="${requisicaoNovoPedido}" class="card-body" action="/pedido/novo" method="POST">
+				<div class="mb-3">
+					<label class="form-label" for="nomeProduto">Produto</label>
+					<input class="form-control" th:field="*{nomeProduto}" th:errorclass="is-invalid"
+						placeholder="nome do produto" />
+					<small>Informar qual o nome do produto.</small>
+					<div class="invalid-feedback" th:errors="*{nomeProduto}">
+						erro
+					</div>
+
+				</div>
+
+				<div class="mb-3">
+					<label class="form-label" for="urlProduto">url</label>
+					<input class="form-control" th:field="*{urlProduto}" th:errorclass="is-invalid"
+						placeholder="url do produto" />
+					<small>Informar qual a url do produto.</small>
+					<div class="invalid-feedback" th:errors="*{urlProduto}">
+						erro
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<label class="form-label" for="urlImagem">Imagem</label>
+					<input class="form-control" th:field="*{urlImagem}" th:errorclass="is-invalid"
+						placeholder="url da Imagem" />
+					<small>Informar qual a url da imagem do produto.</small>
+					<div class="invalid-feedback" th:errors="*{urlImagem}">
+						erro
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<label class="form-label" for="descricao">Descrição</label>
+					<textarea class="form-control" th:field="*{descricao}"
+						placeholder="adicione detalhes importante sobre o produto"></textarea>
+				</div>
+				<button type="submit">Cadastrar</button>
+
+			</form>
+		</div>
+
+	</div>
+</body>
+
+</html>
