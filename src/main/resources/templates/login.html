@@ -1,0 +1,38 @@
+<html>
+
+<head th:replace="~{base :: head}"></head>
+
+<body>
+	<div th:replace="~{base :: logo}"></div>
+
+
+	<div class="container">
+
+		<div th:replace="~{base :: titulo('Login')}"></div>
+
+
+		<div class="card">
+			<form class="card-body" th:action="@{/login}" method="post">
+				<div class="mb-3">
+					<label class="form-label" for="username">Usuário</label>
+					<input class="form-control" name="username" placeholder="Usuário" />
+				</div>
+				<div class="mb-3">
+					<label class="form-label" for="password">Senha</label>
+					<input class="form-control" type="password" name="password" placeholder="Senha" />
+				</div>
+				<button class="btn btn-primary" type="submit">Login</button>
+				
+				<div class="mb-3">
+					Obs: Usuario: neri e senha: 1234
+				</div>
+				<div class="mb-3">
+					Falta a implementação da cadastro do usuario, Usuario administrado para alterar os status do pedido e dentre outras implemntações como comparação de preço.
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+</body>
+

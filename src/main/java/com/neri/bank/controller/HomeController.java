@@ -1,5 +1,6 @@
 package com.neri.bank.controller;
 
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,15 +30,18 @@ public class HomeController {
 	private PedidoRepository pedidoRepository;
 
 	@GetMapping
-	public String home(Model model) {
-		List<Pedido> pedidos = pedidoRepository.findAll();
+	public String home(Model model, Principal principal) {
+		//List<Pedido> pedidos = pedidoRepository.findAll();
+		
+		//pega o usuario.
+		List<Pedido> pedidos = pedidoRepository.findAllByUser(principal.getName());		
 		model.addAttribute("pedidos", pedidos);
 		return "home";
 	}
 
 	@GetMapping("/{status}")
 	public String status(@PathVariable("status") String status, Model model) {
-		List<Pedido> pedidos = pedidoRepository.findByStatus(StatusPedido.valueOf(status.toUpperCase()));
+		List<Pedido> pedidos = pedidoRepository.findByStatus(StatusPedido.valueOf(status.toUpperCase()));		
 		model.addAttribute("pedidos", pedidos);
 		model.addAttribute("status", status);
 		return "home";
