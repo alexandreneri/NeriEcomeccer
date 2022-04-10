@@ -11,27 +11,27 @@ import com.neri.bank.model.repository.UsuarioRepository;
 import com.neri.bank.model.service.CrudUsuarioService;
 
 @SpringBootApplication
-public class NeriBankApplication implements CommandLineRunner {
+public class NeriBankApplication  {
 
-	//instanciar
-	
-	private CrudUsuarioService usuarioService;
-	
-	public NeriBankApplication (CrudUsuarioService usuarioService) {
-		this.usuarioService = usuarioService;
-	}
-		
+//	//instanciar
+//	
+//	private CrudUsuarioService usuarioService;
+//	
+//	public NeriBankApplication (CrudUsuarioService usuarioService) {
+//		this.usuarioService = usuarioService;
+//	}
+//		
 	
 	public static void main(String[] args) {
 		SpringApplication.run(NeriBankApplication.class, args);
 	}
 	
-	@Override
-	public void run (String...args) {
-		Scanner scanner = new Scanner(System.in);		
-		usuarioService.iniciar(scanner); 
-	  
-  }
+//	@Override
+//	public void run (String...args) {
+//		Scanner scanner = new Scanner(System.in);		
+//		usuarioService.iniciar(scanner); 
+//	  
+//  }
 	
 	
 
