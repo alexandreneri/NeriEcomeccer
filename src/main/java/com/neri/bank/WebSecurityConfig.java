@@ -24,8 +24,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private DataSource dataSource;
 
-	@Autowired
-	private UserReporsitory userReporsitory;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -38,18 +36,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-		com.neri.bank.model.User user1 = userReporsitory.findByUsername("neri");
 
-		if (user1.getEnabled().booleanValue()) {
 			auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder);
-		} else {
 
-//		Criação de usuario		
-			UserDetails user = User.builder().username("neri").password(encoder.encode("1234")).roles("ADM").build();
-
-			auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder).withUser(user);
-
-		}
+//
+////		Criação de usuario		
+//			UserDetails user = User.builder().username("neri").password(encoder.encode("1234")).roles("ADM").build();
+//
+//			auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder).withUser(user);
+//
+//		}
 
 	}
 
